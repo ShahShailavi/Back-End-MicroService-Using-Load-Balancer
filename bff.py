@@ -32,8 +32,8 @@ def summary():
 
     feed = Feed(
         title = "Article Summary Feed",
-        link = "www.ankitsharma.com",
-        description = "This is the Ankit Sharma ftom Streams Apartment number 64 from first bedroom",
+        link = "www.article-summary-rss.com",
+        description = "This is Article Summary which extract title, author, url, and created date",
         language = "en-US",
         items = articles
     )
@@ -64,8 +64,8 @@ def commentsummary():
 
     feed = Feed(
         title = "Article-Comment Summary Feed",
-        link = "www.ankitsharma.com",
-        description = "This is the Ankit Sharma ftom Streams Apartment number 64 from first bedroom",
+        link = "www.article-comment-feed.com",
+        description = "This will return all the comments which come under particular article.",
         language = "en-US",
         items = articles
     )
