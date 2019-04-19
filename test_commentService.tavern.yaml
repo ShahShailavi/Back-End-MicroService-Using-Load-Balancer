@@ -5,7 +5,7 @@ test_name: Try to add a comment to an article that does not exists
 stages:
   - name: Make sure that user is not able to add comment if article does not exists
     request:
-      url: http://127.0.0.1:5100/retrieveArticle/SQLite%20Tutorial/addcomment
+      url: http://localhost/addcomment/SQLite%20Tutorial
       auth:
         - shailavi@gmail.com
         - sss
@@ -19,28 +19,12 @@ stages:
 
 ---
 
-test_name: Post an Anonymous comment on an article
-
-stages:
-  - name: Make sure that user is not able to add comment if article does not exists
-    request:
-      url: http://127.0.0.1:5100/retrieveArticle/JavaTutorials/addcomment
-      json:
-        comment: This Tutotial is very good tutorial
-      method: POST
-      headers:
-        content-type: application/json
-    response:
-      status_code: 201
-
----
-
 test_name: Post an authenticated comment on an article
 
 stages:
   - name: Make sure that user is not able to add comment if article does not exists
     request:
-      url: http://127.0.0.1:5100/retrieveArticle/JavaTutorials/addcomment
+      url: http://localhost/addcomment/Java%20Tutorials
       auth:
         - shailavi@gmail.com
         - sss
@@ -59,7 +43,7 @@ test_name: Check that the newly posted article is the most recent
 stages:
   - name: Make sure that the newly posted article matches with the recent article based on its ID
     request:
-      url: http://127.0.0.1:5100/retrieveArticle/JavaTutorials/comments/2
+      url: http://localhost/retrievearticle/Java%20Tutorials/1
       method: GET
       headers:
         content-type: application/json
@@ -67,10 +51,7 @@ stages:
       status_code: 200
       body:
         [
-          [
-            "This Tutorial is very helpful"
-          ],
-          [
-            "This Tutotial is very good tutorial"
-          ]
+          {
+            "comment": "This Tutorial is very helpful"
+          }
         ]

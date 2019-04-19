@@ -5,7 +5,7 @@ test_name: Try to change the password for a user that does not exist
 stages:
   - name: Make sure that user does not allow to change password if it does not exists
     request:
-      url: http://127.0.0.1:5000/updatepassword
+      url: http://localhost/updatepassword
       auth:
         - tamanna@gmail.com
         - sss
@@ -24,7 +24,7 @@ test_name: Create User
 stages:
   - name: Make sure that user is created
     request:
-      url: http://127.0.0.1:5000/createuser
+      url: http://localhost/createuser
       json:
         name: tamanna
         username: tamanna@gmail.com
@@ -42,7 +42,7 @@ test_name: Change the user's password
 stages:
   - name: Make sure that user can change the password
     request:
-      url: http://127.0.0.1:5000/updatepassword
+      url: http://localhost/updatepassword
       auth:
         - tamanna@gmail.com
         - ttt
@@ -61,7 +61,7 @@ test_name: Delete the user
 stages:
   - name: Make sure that user is deleted
     request:
-      url: http://127.0.0.1:5000/deleteuser
+      url: http://localhost/deleteuser
       auth:
         - tamanna@gmail.com
         - zzz
@@ -78,7 +78,7 @@ test_name: Try to change the password for the deleted user
 stages:
   - name: Make sure that if user doesn't exist, then password should not update
     request:
-      url: http://127.0.0.1:5000/updatepassword
+      url: http://localhost/updatepassword
       auth:
         - tamanna@gmail.com
         - zzz

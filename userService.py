@@ -31,6 +31,10 @@ def close_connection(exception):
 def verify():
 
     auth = request.authorization
+
+    if not auth:
+        return Response(status=401, mimetype='application/json')
+
     username = auth.username
     password = auth.password
 
