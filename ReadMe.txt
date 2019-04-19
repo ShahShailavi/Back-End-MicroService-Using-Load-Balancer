@@ -17,3 +17,4 @@
 8. To Generate RSS feed use following curl commands:
           curl -i -H "Content-Type:application/json" -X GET http://localhost/summaryfeed
           curl -i -H "Content-Type:application/json" -X GET http://localhost/commentfeed
+          curl -i -H "Content-Type:application/json" -X GET http://localhost/metafeed
