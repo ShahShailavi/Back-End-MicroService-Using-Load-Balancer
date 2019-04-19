@@ -72,4 +72,55 @@ def commentsummary():
 
     return feed.rss()
 
+@app.route('/metafeed', methods=['GET'])
+# @basic_auth.required
+def feed():
+    # return "<h1> ***Article TEST API** </h1><p>This site is a prototype API for distant reading of science fiction novels.</p>"
+
+    r = requests.get('http://localhost/retrivenrecentarticle/100')
+
+    items = []
+
+    if r is not None:
+        r = r.json()
+
+
+    for article in r:
+
+        # return article['title']
+
+        comment_tags = requests.get("http://localhost/tag/gettag/"+ str(article['article_id']))
+
+
+        if comment_tags is not None and comment_tags != '':
+            comment_tags = comment_tags.json()
+
+        tags = []
+        for tag in comment_tags:
+            if 'tagName' in tag:
+                tags.append(tag['tagName'])
+
+        comment_count = requests.get("http://localhost/comments/count/"+ str(article['article_title']))
+
+        if comment_count == '':
+            comment_count = "Number of comments for given article: 0"
+        else:
+            comment_count = comment_count.text
+
+        items.append(Item(
+            title = article['article_title'],
+            description = comment_count,
+            categories = tags
+        ))
+
+    feed = Feed(
+        title = "RSS Feed",
+        link = "http://www.example.com/rss",
+        description = "Full RSS FEED containing Article, tags and comment count",
+        language = "en-US",
+        lastBuildDate = datetime.datetime.now(),
+        items = items)
+
+    return feed.rss()
+
 app.run()

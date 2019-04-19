@@ -3,7 +3,7 @@
   stages:
     - name: adding a new tag with an article id
       request:
-        url: http://127.0.0.1:5300/tag/addtag
+        url: http://localhost/tag/addtag
         auth:
           - shailavi@gmail.com
           - sss
@@ -20,7 +20,7 @@
   stages:
     - name: connect tag and article id which is not in table
       request:
-        url: http://127.0.0.1:5300/tag/addTags
+        url: http://localhost/tag/addTags
         auth:
           - shailavi@gmail.com
           - sss
@@ -38,7 +38,7 @@
   stages:
     - name: get article id for input tag name
       request:
-        url: http://127.0.0.1:5300/tag/getarticles/calstate
+        url: http://localhost/tag/getarticles/calstate
         method: GET
         headers:
           content-type: application/json
@@ -50,7 +50,7 @@
   stages:
     - name: connect tag and article id
       request:
-        url: http://127.0.0.1:5300/tag/addtag
+        url: http://localhost/tag/addtag
         auth:
           - shailavi@gmail.com
           - sss

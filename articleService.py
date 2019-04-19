@@ -124,7 +124,7 @@ def retrive_Recent_Article(numberOfArcticles):
         db = get_database()
         db.row_factory = dict_factory
         c = db.cursor()
-        c.execute("select article_title,article_content from articles_table order by article_id desc limit (:recentarticle)", {"recentarticle":numberOfArcticles})
+        c.execute("select article_id,article_title,article_content from articles_table order by article_id desc limit (:recentarticle)", {"recentarticle":numberOfArcticles})
         recent_articles = c.fetchall()
         recent_articles_length = len(recent_articles)
         return jsonify(recent_articles)

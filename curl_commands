@@ -53,6 +53,20 @@ curl -i -H "Content-Type:application/json" -X GET http://localhost/comments/coun
 Retrieve n most recent comment
 curl -i -H "Content-Type:application/json" -X GET http://localhost/retrievearticle/Java%20Tutorial/3
 
+Add tags
+curl -u shailavi@gmail.com:ttt -H "Content-Type: application/json" -X POST http://localhost/tag/addtag -d '{"tag":"denver","articleId":"1"}'
+curl -u shailavi@gmail.com:ttt -H "Content-Type: application/json" -X POST http://localhost/tag/addtag -d '{"tag":"denverss","articleId":"1"}'
+
+To get list of tags for article
+curl -u shailavi@gmail.com:ttt -H "Content-Type: application/json" -X GET http://localhost/tag/gettag/1
+
+Delete the tag for particular article
+curl -u shailavi@gmail.com:ttt -H "Content-Type: application/json" -X DELETE http://localhost/tag/deletetag  -d '{"tag":"denver","articleId":"1"}'
+
+To get list of articles for given tag
+curl -u shailavi@gmail.com:ttt -H "Content-Type: application/json" -X GET http://localhost/tag/getarticles/denverss
+
 rssfeed
 curl -i -H "Content-Type:application/json" -X GET http://localhost/summaryfeed
 curl -i -H "Content-Type:application/json" -X GET http://localhost/commentfeed
+curl -i -H "Content-Type:application/json" -X GET http://localhost/metafeed
