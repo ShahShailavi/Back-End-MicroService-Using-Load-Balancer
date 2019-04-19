@@ -4,15 +4,16 @@
 2. Sneha Parikh
 3. Tamanna Bhatt
 
-#Project 1 for backend
-1. Copy the project1 folder to the working directory.
+#Project 2 for Backend Web Programming
+1. Copy the Back-End-MicroService-Using-Load-Balancer folder to the working directory.
 2. Install needed modules from Requirements.txt file
-3. Run Procfile using foreman start to run all the services
-4. Run py.test to run all the test cases.
-
-#Note:
-1. microservice.db file already has 1st user, and one article inserted into it.
-2. In article table, to retrieve articles and all data, we have taken help of article_title and article_title is Unique.
-   so when you again run py.test, then it must fail one test case which is post new article because it is already in our database.
-3. We have also attached one curl file which lists all the curl commands to test our code for all possible scenario and all edge cases.
-4. All curl commands are running on port number 5000.
+3. First of all we need to start nginx and run Procfile using following commands:
+          sudo service nginx start             //To start Nginx
+          foreman start --formation user=3,comment=3,article=3,tags=3,rssfeed=3
+4. We have created only 3 instances for to distribute load among all available 3 server instance.
+5. Run py.test to run all the test cases.
+6. To generate RSS feed for article summary, comments and tags, implementation is available in bff.py file.
+7. All the curl commands are mentioned in curl_commands file.
+8. To Generate RSS feed use following curl commands:
+          curl -i -H "Content-Type:application/json" -X GET http://localhost/summaryfeed
+          curl -i -H "Content-Type:application/json" -X GET http://localhost/commentfeed
